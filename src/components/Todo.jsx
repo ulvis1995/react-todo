@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TodoConditions from './TodoConditions';
 import TodoInput from './TodoInput';
 import TodosList from './TodosList';
@@ -6,8 +6,20 @@ import TodosList from './TodosList';
 function Todo() {
   const [todos, setTodos] = useState([]);
   const [updatedItem, setUpdatedItem] = useState(null);
+  const storage = localStorage.getItem('todo')
 
-  const handleAddTodo = (todo) => {
+  useEffect(() => {
+    localStorage.setItem('todo', JSON.stringify(todos))
+  }, [todos]);
+
+  useEffect(() => {
+    const items = JSON.parse(storage)
+    if (items) {
+      setTodos(items)
+    }
+  }, []);
+
+  const handleAddTodo = (todo) => {    
     setTodos(prev => [...prev, todo]);
   };
 
