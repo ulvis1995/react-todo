@@ -43,7 +43,6 @@ function Todos({ todos,
     }
 
     const renderDateOrInput = () => {
-      console.log(todos);
       return isCurrentBeingUpdated === id
       ? (<input type='date' value={timePlane} onChange={handleInputDateTodo}
           onClick={(e)=> e.stopPropagation()}/>)
