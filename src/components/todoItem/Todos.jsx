@@ -1,10 +1,10 @@
 import React from 'react';
 import { getLocalDate, getTimeCreate } from "./dateChande";
 
-function Todos({ todos,
+function Todos({ 
   id, text, timePlane, dateCreate, done, setTodos,
   onClickDeleteTodo, onClickCompleteTodo, onClickEditTodo, updatedItem, setUpdatedItem}) {
-
+    
     const isCurrentBeingUpdated = updatedItem ;
 
     const deleteTodo = (id) => {
@@ -43,7 +43,6 @@ function Todos({ todos,
     }
 
     const renderDateOrInput = () => {
-      console.log(todos);
       return isCurrentBeingUpdated === id
       ? (<input type='date' value={timePlane} onChange={handleInputDateTodo}
           onClick={(e)=> e.stopPropagation()}/>)
